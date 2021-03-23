@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mva="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--1. 配置SpringMVC的注解驱动-->
+    <mvc:annotation-driven />
+    <!--2. 配置内部视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--页面资源都在/pages文件夹下，且都为.jsp页面-->
+        <property name="prefix" value="/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--配置拦截器链-->
+    <mvc:interceptors>
+        <!--根据登陆状态进行拦截-->
+        <mvc:interceptor>
+            <!--配置对哪些资源进行拦截-->
+            <mvc:mapping path="/**"/>
+            <!--配置对哪些资源进行放行,这里需要放行登录资源，保证用户可以正常登录-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="cn.ywrby.interceptor.LoginStateInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <!--3. 开放静态资源的访问权限-->
+    <mvc:default-servlet-handler/>
+
+    <!--4. 配置组件扫描，扫描Controller-->
+    <context:component-scan base-package="cn.ywrby.controller"/>
+
+</beans>
