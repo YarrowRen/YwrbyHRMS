@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis日志访问映射文件-->
+<mapper namespace="cn.ywrby.mapper.LogMapper">
+
+    <select id="findAll" resultType="log">
+        select * from sys_log
+    </select>
+
+    <insert id="insert">
+        insert into sys_log(accessTime,userId,ipAddress) values (#{accessTime},#{userId},#{ipAddress})
+    </insert>
+
+</mapper>

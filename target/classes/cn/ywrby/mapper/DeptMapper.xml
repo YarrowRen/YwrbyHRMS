@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis部门映射文件-->
+<mapper namespace="cn.ywrby.mapper.DeptMapper">
+
+    <select id="findAll" resultType="dept">
+        select * from sys_dept
+    </select>
+</mapper>

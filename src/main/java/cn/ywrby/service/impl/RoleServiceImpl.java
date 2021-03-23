@@ -1,6 +1,7 @@
 package cn.ywrby.service.impl;
 
 
+import cn.ywrby.domain.Department;
 import cn.ywrby.domain.Role;
 import cn.ywrby.mapper.RoleMapper;
 import cn.ywrby.service.RoleService;
@@ -23,6 +24,11 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> roleList() {
         //获取所有角色的集合
         List<Role> list=roleMapper.findAll();
+        //通过角色ID获取角色所属部门
+        for(Role role:list){
+            Department department=roleMapper.findDeptByRoleId(role.getId());
+            role.setDepartment(department);
+        }
         return list;
     }
 

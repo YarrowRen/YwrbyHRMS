@@ -7,6 +7,7 @@ import cn.ywrby.mapper.RoleMapper;
 import cn.ywrby.mapper.UserMapper;
 import cn.ywrby.service.UserService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.page.PageMethod;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -32,9 +33,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> userList(Integer page,Integer pageSize) {
-
+        //获取分页插件对象
         PageHelper pageHelper=new PageHelper();
-        pageHelper.startPage(page,pageSize);
+        //开始分页，指定分页参数
+        PageMethod.startPage(page,pageSize);
 
         //获取所有用户的集合（此时获取的集合，其角色属性为空）
         List<User> userList = userMapper.findAll();

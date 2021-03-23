@@ -1,5 +1,6 @@
 package cn.ywrby.mapper;
 
+import cn.ywrby.domain.Department;
 import cn.ywrby.domain.Role;
 import org.apache.ibatis.annotations.Select;
 
@@ -51,4 +52,5 @@ public interface RoleMapper {
      */
     public Role findRoleById(Long roleId);
 
+    public Department findDeptByRoleId(Long id);
 }

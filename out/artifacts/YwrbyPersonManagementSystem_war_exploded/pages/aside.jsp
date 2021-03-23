@@ -41,8 +41,14 @@
 						href="${pageContext.request.contextPath}/role/list"> <i
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
+
 					<li><a
-						href="${pageContext.request.contextPath}/pages/syslog-list.jsp"> <i
+							href="${pageContext.request.contextPath}/dept/list"> <i
+							class="fa fa-circle-o"></i> 部门管理
+					</a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/log/list"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>

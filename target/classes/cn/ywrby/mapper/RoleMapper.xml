@@ -5,6 +5,12 @@
 <!--mybatis角色映射文件-->
 <mapper namespace="cn.ywrby.mapper.RoleMapper">
 
+    <resultMap id="deptMap" type="dept">
+        <id column="did" property="id"/>
+        <result column="deptName" property="deptName"/>
+        <result column="deptDesc" property="deptDesc"/>
+    </resultMap>
+
     <select id="findAll" resultType="role">
         select * from sys_role
     </select>
@@ -31,5 +37,9 @@
 
     <select id="findRoleById" parameterType="java.lang.Long" resultType="role">
         select * from sys_role where id = #{id}
+    </select>
+
+    <select id="findDeptByRoleId" resultMap="deptMap" parameterType="java.lang.Long">
+        select *,d.id did,r.id rid from sys_role_dept rd,sys_dept d,sys_role r where rd.roleId=r.id and rd.deptId=d.id and r.id=#{id}
     </select>
 </mapper>

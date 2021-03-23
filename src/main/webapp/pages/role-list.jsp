@@ -148,8 +148,9 @@
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
 										<th class="sorting_asc">ID</th>
-										<th class="sorting_desc">角色名称</th>									
+										<th class="sorting_desc">角色名称</th>
 										<th class="sorting">角色描述</th>
+										<th class="sorting">所属部门</th>
 										<th class="sorting">编辑操作</th>
 										<th class="sorting">删除操作</th>
 									</tr>
@@ -161,6 +162,7 @@
 											<td>${role.id}</td>
 											<td>${role.roleName}</td>
 											<td>${role.roleDesc}</td>
+											<td>${role.department.deptName}</td>
 											<td class="text-center">
 												<a href="#" onclick="editRole('${role.id}')" class="btn bg-olive btn-xs">编辑</a>
 											</td>

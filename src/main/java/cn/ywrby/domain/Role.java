@@ -7,6 +7,7 @@ public class Role {
     private Long id;
     private String roleName;
     private String roleDesc;
+    private Department department;  //所属部门
 
     public Long getId() {
         return id;
@@ -32,12 +33,21 @@ public class Role {
         this.roleDesc = roleDesc;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
                 ", roleName='" + roleName + '\'' +
                 ", roleDesc='" + roleDesc + '\'' +
+                ", department=" + department +
                 '}';
     }
 }

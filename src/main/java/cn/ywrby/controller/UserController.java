@@ -1,8 +1,8 @@
 package cn.ywrby.controller;
 
-import cn.ywrby.domain.Page;
 import cn.ywrby.domain.Role;
 import cn.ywrby.domain.User;
+import cn.ywrby.service.LogService;
 import cn.ywrby.service.RoleService;
 import cn.ywrby.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -36,9 +36,17 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private LogService logService;
+
+    @Autowired
+    private HttpServletRequest request;
+
 
     /**
      * 获取用户列表与其视图
+     * @param page 分页开始页
+     * @param pageSize 分页显示数量
      * @return 返回用户列表及其视图
      */
     @RequestMapping("/list")
@@ -48,8 +56,9 @@ public class UserController {
         //调用service层方法获得用户列表
         List<User> list=userService.userList(page,pageSize);
 
-
+        //获取分页信息对象
         PageInfo<User> info=new PageInfo<User>(list);
+        //向模型中写入日志信息
         modelAndView.addObject("pageInfo",info);
 
         //向模型中写入数据
@@ -104,7 +113,7 @@ public class UserController {
     }
 
     /**
-     * 实现用户登录操作
+     * 实现用户登录操作,并在每次用户登录时，将登录状态信息记录到sys_log表中
      * @param username 用户名
      * @param password 密码
      * @param session HttpSession会话
@@ -114,8 +123,11 @@ public class UserController {
     public String login(String username, String password, HttpSession session){
         //调用服务层方法检查数据库是否存在该用户
         User user=userService.login(username,password);
-        //不为空表示用户密码正确，向会话中写入对象，重定向到主页
+        //不为空表示用户密码正确，向会话中写入对象，并记录登录信息，重定向到主页
         if(user!=null){
+            //保存登录信息
+            logService.save(user,request);
+            //写入数据
             session.setAttribute("user",user);
             return "redirect:/index.jsp";
         }

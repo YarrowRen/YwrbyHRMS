@@ -204,7 +204,7 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。
+								总共${pageInfo.pages}页，共${pageInfo.total} 条数据。
 							</div>
 						</div>
 
