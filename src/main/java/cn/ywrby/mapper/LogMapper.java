@@ -21,4 +21,6 @@ public interface LogMapper {
      * @param date 登录日期
      */
     public void insert(@Param("ipAddress") String ipAddress, @Param("userId") Long id,@Param("accessTime") Date date);
+
+    public void delUserLog(Long userId);
 }

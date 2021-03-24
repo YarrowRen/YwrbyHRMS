@@ -61,6 +61,18 @@
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+
+	<script>
+		function myCheck() {
+			var roleName=document.getElementById("roleName");
+			if(roleName.value===null || roleName.value==="" ){
+				alert("职务名称不能为空！");
+				return false;
+			}
+			return true;
+		}
+	</script>
+
 </head>
 
 	<body class="hold-transition skin-purple sidebar-mini">
@@ -85,14 +97,14 @@
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
-				<li><a href="${pageContext.request.contextPath}/role/findAll.do">角色管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/role/list">角色管理</a></li>
 				<li class="active">角色表单</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
 			<form action="${pageContext.request.contextPath}/role/save"
-				method="post">
+				method="post" onsubmit="return myCheck()">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 
@@ -106,13 +118,20 @@
 								   readonly="readonly" value="${role.id}">
 						</div>
 
-						<div class="col-md-2 title"></div>
-						<div class="col-md-4 data"></div>
+						<div class="col-md-2 title">所属部门</div>
+						<div class="col-md-4 data">
+							<select class="form-control" name="deptId"
+									placeholder="其他" value="" >
+								<c:forEach items="${deptList}" var="dept">
+									<option value="${dept.id}" >${dept.deptName}</option>
+								</c:forEach>
+							</select>
+						</div>
 
 						<div class="col-md-2 title">角色名称</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="roleName"
-								placeholder="角色名称" value="${role.roleName}">
+								placeholder="角色名称" value="${role.roleName}" id="roleName">
 						</div>
 						<div class="col-md-2 title">角色描述</div>
 						<div class="col-md-4 data">

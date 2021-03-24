@@ -19,7 +19,7 @@
         update sys_role set roleName=#{roleName},roleDesc=#{roleDesc} where id=#{id}
     </update>
 
-    <insert id="insert" parameterType="role">
+    <insert id="insert" parameterType="role" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into sys_role(roleName,roleDesc) values (#{roleName},#{roleDesc})
     </insert>
 
@@ -42,4 +42,12 @@
     <select id="findDeptByRoleId" resultMap="deptMap" parameterType="java.lang.Long">
         select *,d.id did,r.id rid from sys_role_dept rd,sys_dept d,sys_role r where rd.roleId=r.id and rd.deptId=d.id and r.id=#{id}
     </select>
+
+    <insert id="insertRoleDept">
+        insert into sys_role_dept values (#{roleId},#{deptId})
+    </insert>
+
+    <delete id="delRoleDept" parameterType="java.lang.Long">
+        delete from sys_role_dept where roleId=#{id}
+    </delete>
 </mapper>

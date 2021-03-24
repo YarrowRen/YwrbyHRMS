@@ -61,6 +61,30 @@
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+
+
+	<script>
+		function myCheck() {
+			var username=document.getElementById("username");
+			var password=document.getElementById("password");
+			var roles=document.getElementsByName("roleIds");
+			var j=0;
+			if(username.value===null || username.value==="" || password.value===null||password.value===""){
+				alert("用户名和密码不能为空！");
+				return false;
+			}
+			for(var i=0;i<roles.length;i++){
+				if(roles[i].checked){
+					j++
+				}
+			}
+			if(j===0){
+				alert("职务不能为空！");
+				return false;
+			}
+			return true;
+		}
+	</script>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -93,7 +117,7 @@
 			<!-- 内容头部 /-->
 
 			<form action="${pageContext.request.contextPath}/user/save"
-				method="post">
+				method="post" onsubmit="return myCheck()">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 
@@ -110,12 +134,12 @@
 
 						<div class="col-md-2 title">用户名称</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="username"
+							<input type="text" class="form-control" name="username" id="username"
 								placeholder="用户名称" value="${user.username}">
 						</div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
-							<input type="password" class="form-control" name="password"
+							<input type="password" class="form-control" name="password" id="password"
 								placeholder="密码" value="${user.password}">
 						</div>
 						<div class="col-md-2 title">邮箱</div>
@@ -128,12 +152,16 @@
 							<input type="text" class="form-control" name="phoneNum"
 								placeholder="联系电话" value="${user.phoneNum}">
 						</div>
-						<div class="col-md-2 title">用户角色</div>
-						<div class="col-md-10 data">
-							<c:forEach items="${roleList}" var="role">
-								<input class="" type="checkbox" name="roleIds" value="${role.id}">${role.roleName}
-							</c:forEach>
-						</div>
+						<div class="col-md-12 title">用户职务</div>
+
+						<c:forEach items="${deptList}" var="dept">
+							<div class="col-md-2 title">${dept.deptName}</div>
+							<div class="col-md-10 data">
+								<c:forEach items="${dept.roleList}" var="role">
+									<input class="" type="checkbox" name="roleIds" value="${role.id}">${role.roleName}
+								</c:forEach>
+							</div>
+						</c:forEach>
 
 					</div>
 				</div>

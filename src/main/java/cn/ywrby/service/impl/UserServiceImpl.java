@@ -3,6 +3,7 @@ package cn.ywrby.service.impl;
 
 import cn.ywrby.domain.Role;
 import cn.ywrby.domain.User;
+import cn.ywrby.mapper.LogMapper;
 import cn.ywrby.mapper.RoleMapper;
 import cn.ywrby.mapper.UserMapper;
 import cn.ywrby.service.UserService;
@@ -30,6 +31,9 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private RoleMapper roleMapper;
+
+    @Autowired
+    private LogMapper logMapper;
 
     @Override
     public List<User> userList(Integer page,Integer pageSize) {
@@ -90,6 +94,8 @@ public class UserServiceImpl implements UserService{
     public void delUser(Long userId) {
         //删除sys_user_role表中该用户的角色信息
         userMapper.delUserRole(userId);
+        //删除sys_log表中该用户的登录日志信息
+        logMapper.delUserLog(userId);
         //删除sys_user表中该用户的基本信息
         userMapper.delUser(userId);
     }

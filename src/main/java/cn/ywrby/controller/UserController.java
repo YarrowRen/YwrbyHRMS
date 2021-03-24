@@ -1,7 +1,9 @@
 package cn.ywrby.controller;
 
+import cn.ywrby.domain.Department;
 import cn.ywrby.domain.Role;
 import cn.ywrby.domain.User;
+import cn.ywrby.service.DeptService;
 import cn.ywrby.service.LogService;
 import cn.ywrby.service.RoleService;
 import cn.ywrby.service.UserService;
@@ -35,6 +37,9 @@ public class UserController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private DeptService deptService;
 
     @Autowired
     private LogService logService;
@@ -79,8 +84,11 @@ public class UserController {
         ModelAndView modelAndView=new ModelAndView();
         //调用role的service层方法获得数据库中的角色列表
         List<Role> list=roleService.roleList();
+        //获取所有部门信息
+        List<Department> deptList = deptService.deptList();
         //向模型中写入数据
         modelAndView.addObject("roleList",list);
+        modelAndView.addObject("deptList",deptList);
         //指定跳转视图，跳转到新增用户界面
         modelAndView.setViewName("user-add");
         return modelAndView;
@@ -102,7 +110,7 @@ public class UserController {
 
 
     /**
-     * 利用restful方式获取用户ID，根据用户ID删除用户操作
+     * 利用restful方式获取用户ID，根据用户ID删除用户操作，同时要删除用户日志信息
      * @param userId 要删除的用户ID
      * @return 重定向到用户列表的获取以刷新页面
      */
@@ -148,11 +156,15 @@ public class UserController {
         List<Role> list=roleService.roleList();
         //根据用户ID获取用户对象
         User user=userService.getUserById(userId);
+        //获取所有部门信息
+        List<Department> deptList = deptService.deptList();
         //向模型中写入数据
         //  1. 写入角色列表
         modelAndView.addObject("roleList",list);
         //  2. 写入用户数据
         modelAndView.addObject("user",user);
+        //  3. 写入部门信息
+        modelAndView.addObject("deptList",deptList);
         //指定跳转视图，跳转到新增用户界面
         modelAndView.setViewName("user-edit");
         return modelAndView;

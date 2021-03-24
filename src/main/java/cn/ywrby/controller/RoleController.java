@@ -1,7 +1,9 @@
 package cn.ywrby.controller;
 
+import cn.ywrby.domain.Department;
 import cn.ywrby.domain.Role;
 import cn.ywrby.domain.User;
+import cn.ywrby.service.DeptService;
 import cn.ywrby.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private DeptService deptService;
 
     /**
      * 获取角色列表
@@ -47,13 +52,18 @@ public class RoleController {
      * @return 返回重定向到获取角色列表部分（不可以直接返回jsp页面，那样数据没有刷新，仍是旧表单）
      */
     @RequestMapping("/save")
-    public String saveRole(Role role){
+    public String saveRole(Role role,Long deptId){
+        //通过ID查询对应部门
+        Department department=deptService.findDeptById(deptId);
+        //为职业传入部门信息
+        role.setDepartment(department);
+        //保存职业信息
         roleService.save(role);
         return "redirect:/role/list";
     }
 
     /**
-     * 删除指定角色并将所有担任此角色的用户与该角色解绑
+     * 删除指定角色并将所有担任此角色的用户与该角色解绑，以及从其部门关系中删除
      * @param roleId 角色ID
      * @return 重定向到角色列表以实现数据刷新
      */
@@ -63,14 +73,31 @@ public class RoleController {
         return "redirect:/role/list";
     }
 
+
+    @RequestMapping("/saveUI")
+    public ModelAndView saveUI(){
+        //创建模型视图对象
+        ModelAndView modelAndView=new ModelAndView();
+        //获取当前部门列表
+        List<Department> deptList = deptService.deptList();
+        //存储部门列表
+        modelAndView.addObject("deptList",deptList);
+        //指定跳转到新增页面
+        modelAndView.setViewName("role-add");
+        return modelAndView;
+    }
+
     @RequestMapping("/editUI/{roleId}")
     public ModelAndView editRole(@PathVariable(value = "roleId",required = true)Long roleId){
         //创建模型视图对象
         ModelAndView modelAndView=new ModelAndView();
         //根据角色ID获取角色对象
         Role role=roleService.getRoleById(roleId);
+        //获取部门信息
+        List<Department> deptList=deptService.deptList();
         //向模型中写入数据
         modelAndView.addObject("role",role);
+        modelAndView.addObject("deptList",deptList);
         //指定跳转视图，跳转到新增用户界面
         modelAndView.setViewName("role-edit");
         return modelAndView;

@@ -60,16 +60,10 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 	<script>
-		function editRole(roleId) {
-			location.href="${pageContext.request.contextPath}/role/editUI/"+roleId
+		function editDept(deptId) {
+			location.href="${pageContext.request.contextPath}/dept/editUI/"+deptId
 		}
 
-		function delRole(roleId) {
-			if(confirm("是否删除该角色？")){
-				//调用相关函数，利用角色ID删除该用户
-				location.href="${pageContext.request.contextPath}/role/delete/"+roleId
-			}
-		}
 	</script>
 </head>
 
@@ -120,11 +114,11 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/role-add.jsp'">
+										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/dept/saveUI'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										
-										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/role/list'">
+										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/dept/list'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
@@ -151,7 +145,6 @@
 										<th class="sorting_desc">部门名称</th>
 										<th class="sorting">部门描述</th>
 										<th class="sorting">编辑操作</th>
-										<th class="sorting">删除操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -162,10 +155,7 @@
 											<td>${dept.deptName}</td>
 											<td>${dept.deptDesc}</td>
 											<td class="text-center">
-												<a href="#" onclick="editRole('${dept.id}')" class="btn bg-olive btn-xs">编辑</a>
-											</td>
-											<td class="text-center">
-												<a href="#" onclick="delRole('${dept.id}')" class="btn bg-olive btn-xs">删除</a>
+												<a href="#" onclick="editDept('${dept.id}')" class="btn bg-olive btn-xs">编辑</a>
 											</td>
 										</tr>
 									</c:forEach>

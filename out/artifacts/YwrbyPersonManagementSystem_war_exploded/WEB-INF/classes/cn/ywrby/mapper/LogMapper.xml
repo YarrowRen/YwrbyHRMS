@@ -13,4 +13,7 @@
         insert into sys_log(accessTime,userId,ipAddress) values (#{accessTime},#{userId},#{ipAddress})
     </insert>
 
+    <delete id="delUserLog" parameterType="java.lang.Long">
+        delete from sys_log where userId=#{id}
+    </delete>
 </mapper>

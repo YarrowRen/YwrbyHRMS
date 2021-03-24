@@ -20,7 +20,7 @@ public interface RoleService {
     public void save(Role role);
 
     /**
-     * 删除指定角色ID的信息以及和用户的绑定关系
+     * 删除指定角色ID的信息以及和用户的绑定关系,并从其部门关系中删除
      * @param roleId 角色ID
      */
     public void delRole(Long roleId);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,6 +61,20 @@
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+
+
+	<script>
+		function myCheck() {
+			var roleName=document.getElementById("roleName");
+			if(roleName.value===null || roleName.value==="" ){
+				alert("职务名称不能为空！");
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+
 </head>
 
 	<body class="hold-transition skin-purple sidebar-mini">
@@ -91,7 +106,7 @@
 			<!-- 内容头部 /-->
 
 			<form action="${pageContext.request.contextPath}/role/save"
-				method="post">
+				method="post" onsubmit="return myCheck()">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 
@@ -102,8 +117,19 @@
 						<div class="col-md-2 title">角色名称</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="roleName"
-								placeholder="角色名称" value="">
+								placeholder="角色名称" value="" id="roleName">
 						</div>
+
+						<div class="col-md-2 title">所属部门</div>
+						<div class="col-md-4 data">
+							<select class="form-control" name="deptId"
+								   placeholder="其他" value="">
+								<c:forEach items="${deptList}" var="dept">
+									<option value="${dept.id}" >${dept.deptName}</option>
+								</c:forEach>
+							</select>
+						</div>
+
 						<div class="col-md-2 title">角色描述</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="roleDesc"

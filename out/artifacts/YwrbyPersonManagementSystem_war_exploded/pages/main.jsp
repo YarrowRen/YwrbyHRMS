@@ -116,8 +116,8 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>订单</h3>
-                            <p>订单管理</p>
+                            <h3>项目</h3>
+                            <p>项目管理</p>
                         </div>
                         <a href="${pageContext.request.contextPath}/user/list" class="small-box-footer">
                             点击查看
@@ -330,8 +330,6 @@
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                         class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                        class="fa fa-times"></i></button>
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -436,7 +434,11 @@
                     <div class="box box-danger">
                         <div class="box-header with-border">
                             <h3 class="box-title">最新成员</h3>
-
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body no-padding">

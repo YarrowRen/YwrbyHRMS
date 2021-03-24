@@ -162,7 +162,7 @@
 										<th class="sorting_desc">用户名</th>
 										<th class="sorting_asc sorting_asc_disabled">邮箱</th>
 										<th class="sorting_desc sorting_desc_disabled">联系电话</th>
-										<th class="sorting">具有角色</th>
+										<th class="sorting">当前职务</th>
 										<th class="sorting">编辑用户</th>
 										<th class="sorting">删除用户</th>
 									</tr>
