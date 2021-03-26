@@ -61,5 +61,10 @@ public interface UserMapper {
      */
     public User findUserById(Long userId);
 
+    /**
+     * 利用模糊用户名查询可能的用户列表并返回
+     * @param username 模糊用户名
+     * @return 与模糊用户名匹配的用户列表
+     */
     public List<User> findByUsername(String username);
 }

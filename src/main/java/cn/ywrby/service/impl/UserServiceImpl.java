@@ -126,6 +126,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> findUserByUsername(String username) {
+        //获取模糊查询匹配的用户列表
         List<User> userList=userMapper.findByUsername(username);
         return userList;
     }

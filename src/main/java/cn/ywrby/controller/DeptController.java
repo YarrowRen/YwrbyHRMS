@@ -11,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * 部门信息控制层，负责部门信息的编辑删除查看等功能
+ */
 @RequestMapping("/dept")
 @Controller("deptController")
 public class DeptController {
@@ -18,6 +21,9 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
+    /**
+     * 获取全部的部门信息并显示
+     */
     @RequestMapping("/list")
     public ModelAndView deptList(){
         //创建模型视图对象
@@ -32,6 +38,10 @@ public class DeptController {
         return modelAndView;
     }
 
+    /**
+     * 部门信息编辑的UI展示方法，负责传入部门的原信息，方便编辑
+     * @param deptId 部门的ID（用于获取部门对象）
+     */
     @RequestMapping("/editUI/{deptId}")
     public ModelAndView editUI(@PathVariable(value = "deptId",required = true)Long deptId){
         //创建模型视图对象
@@ -45,11 +55,19 @@ public class DeptController {
         return modelAndView;
     }
 
+    /**
+     * 重定向到新建部门信息页面
+     */
     @RequestMapping("/saveUI")
     public String saveUI(){
         return "redirect:/pages/dept-add.jsp";
     }
 
+    /**
+     * 保存部门信息
+     * @param dept 部门对象
+     * @return 重定向到部门列表以刷新数据库，保证新增对象的显示
+     */
     @RequestMapping("/save")
     public String save(Department dept){
         deptService.save(dept);

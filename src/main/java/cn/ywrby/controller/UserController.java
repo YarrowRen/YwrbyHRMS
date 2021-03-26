@@ -171,6 +171,11 @@ public class UserController {
     }
 
 
+    /**
+     * 模糊搜索含指定用户名片段的用户对象
+     * @param username 模糊用户名
+     * @return 返回视图以及模糊查询的用户列表
+     */
     @RequestMapping("/find/{searchName}")
     public ModelAndView findUserByUsername(@PathVariable(value = "searchName")String username){
         //创建模型视图对象

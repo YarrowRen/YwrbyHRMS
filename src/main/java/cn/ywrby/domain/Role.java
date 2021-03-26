@@ -4,9 +4,9 @@ package cn.ywrby.domain;
  * 角色：包括角色ID，角色名称与角色负责的工作
  */
 public class Role {
-    private Long id;
-    private String roleName;
-    private String roleDesc;
+    private Long id;  //职务ID
+    private String roleName;  //职务名称
+    private String roleDesc;  //职务简介
     private Department department;  //所属部门
 
     public Long getId() {

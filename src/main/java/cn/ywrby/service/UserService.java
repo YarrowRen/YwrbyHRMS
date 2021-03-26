@@ -48,5 +48,10 @@ public interface UserService {
      */
     public User getUserById(Long userId);
 
+    /**
+     * 利用模糊用户名模糊查询用户
+     * @param username 模糊用户名
+     * @return 查询到的匹配的用户列表
+     */
     public List<User> findUserByUsername(String username);
 }

@@ -147,9 +147,9 @@
                             <img class="profile-user-img img-responsive img-circle"
                                  src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户资料 picture">
 
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
+                            <h3 class="profile-username text-center">Ywrby</h3>
 
-                            <p class="text-muted text-center">软件工程师</p>
+                            <p class="text-muted text-center">总经理，软件工程师</p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
@@ -200,7 +200,7 @@
                                     <!-- checkbox -->
                                     <input type="checkbox" value="">
                                     <!-- todo text -->
-                                    <span class="text">设计一个不错的主题</span>
+                                    <span class="text">测试事项1</span>
                                     <!-- Emphasis label -->
                                     <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 分钟前</small>
                                     <!-- General tools such as edit or delete-->
@@ -216,7 +216,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                                     <input type="checkbox" value="">
-                                    <span class="text">使响应式主题</span>
+                                    <span class="text">测试事项2</span>
                                     <small class="label label-info"><i class="fa fa-clock-o"></i> 4 小时前</small>
                                     <div class="tools">
                                         <i class="fa fa-check-square-o"></i>
@@ -230,7 +230,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                                     <input type="checkbox" value="">
-                                    <span class="text">让主题像星星般闪耀</span>
+                                    <span class="text">测试事项3</span>
                                     <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 天前</small>
                                     <div class="tools">
                                         <i class="fa fa-check-square-o"></i>
@@ -244,7 +244,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                                     <input type="checkbox" value="">
-                                    <span class="text">让主题像星星般闪耀</span>
+                                    <span class="text">测试事项4</span>
                                     <small class="label label-success"><i class="fa fa-clock-o"></i> 3 天前</small>
                                     <div class="tools">
                                         <i class="fa fa-check-square-o"></i>
@@ -258,7 +258,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                                     <input type="checkbox" value="">
-                                    <span class="text">检查你的邮件和通知</span>
+                                    <span class="text">测试事项5</span>
                                     <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 周前</small>
                                     <div class="tools">
                                         <i class="fa fa-check-square-o"></i>
@@ -272,7 +272,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
                                     <input type="checkbox" value="">
-                                    <span class="text">让主题像星星般闪耀</span>
+                                    <span class="text">测试事项6</span>
                                     <small class="label label-default"><i class="fa fa-clock-o"></i> 1 月前</small>
                                     <div class="tools">
                                         <i class="fa fa-check-square-o"></i>
@@ -301,18 +301,18 @@
                             <strong><i class="fa fa-book margin-r-5"></i> 教育</strong>
 
                             <p class="text-muted">
-                                B.S. in Computer Science from the University of Tennessee at Knoxville
+                                Studeng Majoring CS in <a href="http://www.swu.edu.cn/">SWU</a>
                             </p>
 
                             <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i> 位置</strong>
 
-                            <p class="text-muted">Malibu, California</p>
+                            <p class="text-muted">ChongQing,China</p>
 
                             <strong><i class="fa fa-file-text-o margin-r-5"></i> 说明</strong>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                            <p>wish you and I all have a happy network environment</p>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -346,9 +346,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>使命召唤4</td>
-                                        <td><span class="label label-success">已发货</span></td>
+                                        <td><a href="pages/examples/invoice.html">1</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-success">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
                                                 90,80,90,-70,61,-83,63
@@ -356,9 +356,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                        <td>三星智能电视</td>
-                                        <td><span class="label label-warning">待付款</span></td>
+                                        <td><a href="pages/examples/invoice.html">2</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-warning">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
                                                 90,80,-90,70,61,-83,68
@@ -366,9 +366,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="label label-danger">已交付</span></td>
+                                        <td><a href="pages/examples/invoice.html">3</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-danger">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
                                                 90,-80,90,70,-61,83,63
@@ -376,9 +376,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>三星智能电视</td>
-                                        <td><span class="label label-info">处理中</span></td>
+                                        <td><a href="pages/examples/invoice.html">4</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-info">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00c0ef" data-height="20">
                                                 90,80,-90,70,-61,83,63
@@ -386,9 +386,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                        <td>三星智能电视</td>
-                                        <td><span class="label label-warning">待付款</span></td>
+                                        <td><a href="pages/examples/invoice.html">5</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-warning">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">
                                                 90,80,-90,70,61,-83,68
@@ -396,9 +396,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="label label-danger">已交付</span></td>
+                                        <td><a href="pages/examples/invoice.html">6</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-danger">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">
                                                 90,-80,90,70,-61,83,63
@@ -406,9 +406,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>使命召唤4</td>
-                                        <td><span class="label label-success">已发货</span></td>
+                                        <td><a href="pages/examples/invoice.html">7</a></td>
+                                        <td>基础开发项目</td>
+                                        <td><span class="label label-success">已完成</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
                                                 90,80,90,-70,61,-83,63
@@ -445,42 +445,42 @@
                             <ul class="users-list clearfix">
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Alexander Pierce</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">今天</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Norman</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">昨天</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Jane</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月12日</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">John</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月12日</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Alexander</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月13日</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Sarah</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月14日</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Nora</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月15日</span>
                                 </li>
                                 <li>
                                     <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Nadia</a>
+                                    <a class="users-list-name" href="#">Ywrby</a>
                                     <span class="users-list-date">1月15日</span>
                                 </li>
                             </ul>

@@ -22,5 +22,9 @@ public interface LogMapper {
      */
     public void insert(@Param("ipAddress") String ipAddress, @Param("userId") Long id,@Param("accessTime") Date date);
 
+    /**
+     * 利用用户ID删除用户的登录日志信息sys_log
+     * @param userId 用户ID
+     */
     public void delUserLog(Long userId);
 }

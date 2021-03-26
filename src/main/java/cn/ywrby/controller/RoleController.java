@@ -74,6 +74,9 @@ public class RoleController {
     }
 
 
+    /**
+     * 跳转到新增职务的页面，并传入当前部门信息
+     */
     @RequestMapping("/saveUI")
     public ModelAndView saveUI(){
         //创建模型视图对象
@@ -87,6 +90,10 @@ public class RoleController {
         return modelAndView;
     }
 
+    /**
+     * 跳转到编辑职务的页面
+      * @param roleId 要编辑的职务ID
+     */
     @RequestMapping("/editUI/{roleId}")
     public ModelAndView editRole(@PathVariable(value = "roleId",required = true)Long roleId){
         //创建模型视图对象

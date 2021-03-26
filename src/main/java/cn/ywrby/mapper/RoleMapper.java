@@ -53,10 +53,24 @@ public interface RoleMapper {
      */
     public Role findRoleById(Long roleId);
 
+    /**
+     * 利用部门ID获取部门对象
+     * @param id 部门ID
+     * @return 部门对象
+     */
     public Department findDeptByRoleId(Long id);
 
+    /**
+     * 向sys_role_dept表中插入职务与部门的对应关系
+     * @param roleId 职务ID
+     * @param deptId 部门ID
+     */
     public void insertRoleDept(@Param("roleId") Long roleId,@Param("deptId") Long deptId);
 
+    /**
+     * 删除职务与部门的对应关系
+     * @param id 职务ID
+     */
     public void delRoleDept(Long id);
 
 }

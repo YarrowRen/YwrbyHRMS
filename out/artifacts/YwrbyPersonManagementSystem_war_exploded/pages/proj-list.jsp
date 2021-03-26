@@ -118,9 +118,9 @@
                                     <tbody>
 
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>使命召唤4</td>
-                                        <td><span class="label label-success">已发货</span></td>
+                                        <td><a href="pages/examples/invoice.html">1</a></td>
+                                        <td>基础开发项目-1</td>
+                                        <td><span class="label label-success">已完成</span></td>
                                         <td>李四</td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
@@ -129,9 +129,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>使命召唤4</td>
-                                        <td><span class="label label-success">已发货</span></td>
+                                        <td><a href="pages/examples/invoice.html">2</a></td>
+                                        <td>基础开发项目-2</td>
+                                        <td><span class="label label-success">已完成</span></td>
                                         <td>张三</td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
@@ -147,7 +147,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">创建新订单</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">创建新项目</a>
 
                             <!-- 分页标签 -->
                             <div class="box-tools pull-right">
