@@ -58,6 +58,23 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<User> userList() {
+        //获取所有用户的集合（此时获取的集合，其角色属性为空）
+        List<User> userList = userMapper.findAll();
+        //遍历集合获取每个用户的角色集合
+        for (User user:userList) {
+            //获取用户的ID
+            Long id=user.getId();
+            //利用用户ID获取其所有的角色集合
+            List<Role> roleList=roleMapper.findRolesByUserId(id);
+            //将获取到的角色集合存入其属性值中
+            user.setRoleList(roleList);
+        }
+        //返回用户集合
+        return userList;
+    }
+
+    @Override
     public void save(User user,Long[] roleIds) {
         //保存用户基本信息（在sys_user表中进行）并返回数据库中自动生成的主键ID
         Long userId=user.getId();

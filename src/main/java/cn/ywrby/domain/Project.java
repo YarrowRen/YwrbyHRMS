@@ -1,5 +1,7 @@
 package cn.ywrby.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Project {
@@ -8,8 +10,14 @@ public class Project {
     private User chargeUser;
     private Department department;
     private String clientName;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
+
+
     private int state;
     private int scale;
     private String projDesc;
@@ -66,7 +74,7 @@ public class Project {
         return deadline;
     }
 
-    public void setDeadLine(Date deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
@@ -103,7 +111,7 @@ public class Project {
                 ", department=" + department +
                 ", clientName='" + clientName + '\'' +
                 ", startTime=" + startTime +
-                ", deadLine=" + deadline +
+                ", deadline=" + deadline +
                 ", state=" + state +
                 ", scale=" + scale +
                 ", projDesc='" + projDesc + '\'' +

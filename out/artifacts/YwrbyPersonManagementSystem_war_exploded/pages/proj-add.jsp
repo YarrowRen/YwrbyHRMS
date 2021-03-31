@@ -61,7 +61,6 @@
           href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
-
     <script>
         function myCheck() {
             var deptName=document.getElementById("deptName");
@@ -71,6 +70,7 @@
             }
             return true;
         }
+
     </script>
 
 </head>
@@ -103,8 +103,8 @@
         </section>
         <!-- 内容头部 /-->
 
-        <form action="${pageContext.request.contextPath}/dept/save"
-              method="post" onsubmit="return myCheck()">
+        <form action="${pageContext.request.contextPath}/proj/save"
+              method="post">
             <!-- 正文区域 -->
             <section class="content"> <!--产品信息-->
 
@@ -114,53 +114,69 @@
 
                         <div class="col-md-2 title">项目名称</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="deptName" id="deptName"
+                            <input type="text" class="form-control" name="projName" id="projName"
                                    placeholder="项目名称" value="">
                         </div>
 
                         <div class="col-md-2 title">客户单位</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="deptDesc"
+                            <input type="text" class="form-control" name="clientName"
                                    placeholder="客户单位" value="">
                         </div>
 
                         <div class="col-md-2 title">负责人</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="deptName" id="deptName"
-                                   placeholder="负责人" value="">
+                            <select id="e1" style="width: 100%" name="userId">
+                                <c:forEach items="${userList}" var="user">
+                                    <option value="${user.id}" >${user.username}</option>
+                                </c:forEach>
+                            </select>
                         </div>
 
                         <div class="col-md-2 title">所属团队</div>
                         <div class="col-md-4 data">
-                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--open" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="true" tabindex="0" aria-labelledby="select2-bkgw-container" aria-owns="select2-bkgw-results" aria-activedescendant="select2-bkgw-result-qpsi-阿拉巴马州"><span class="select2-selection__rendered" id="select2-bkgw-container" title="阿拉巴马州">阿拉巴马州</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            <select id="e2" style="width: 100%"  name="deptId">
+                                <c:forEach items="${departmentList}" var="dept" >
+                                    <option value="${dept.id}">${dept.deptName}</option>
+                                </c:forEach>
+                            </select>
                         </div>
 
                         <div class="col-md-2 title">项目开始时间</div>
                         <div class="col-md-4 data">
-                            <input type="date" class="form-control pull-right" id="datepicker">
+                            <input type="date" class="form-control pull-right" name="startTime">
                         </div>
 
                         <div class="col-md-2 title">项目截止时间</div>
                         <div class="col-md-4 data">
-                            <input type="date" class="form-control pull-right" id="datepicker">
+                            <input type="date" class="form-control pull-right" name="deadline">
                         </div>
 
                         <div class="col-md-2 title">项目状态</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="deptName" id="deptName"
-                                   placeholder="项目状态" value="">
+                            <select id="e3" style="width: 100%" name="state">
+                                <option value="1">启动阶段</option>
+                                <option value="2">计划阶段</option>
+                                <option value="3">执行阶段</option>
+                                <option value="4">结束阶段</option>
+                                <option value="5">项目完成</option>
+                                <option value="6">项目异常</option>
+                            </select>
                         </div>
 
                         <div class="col-md-2 title">项目规模</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="deptDesc"
-                                   placeholder="项目规模" value="">
+                            <select id="e4" style="width: 100%" name="scale">
+                                <option value="1">大型项目</option>
+                                <option value="2">中型项目</option>
+                                <option value="3">小型项目</option>
+                            </select>
                         </div>
 
 
                         <div class="col-md-12 title">项目内容基本介绍</div>
                         <div>
-                            <textarea class="form-control" rows="5" placeholder="输入 ..." style="resize: none"></textarea>
+                            <textarea name="projDesc" class="form-control" rows="5" placeholder="输入 ..." style="resize: none"></textarea>
                         </div>
 
                         <div class="col-md-12 title">项目附属文件</div>
@@ -286,6 +302,12 @@
     $(document).ready(function() {
         // 选择框
         $(".select2").select2();
+
+        $(document).ready(function() { $("#e1").select2(); });
+        $(document).ready(function() { $("#e2").select2({minimumResultsForSearch: -1}); });
+        $(document).ready(function() { $("#e3").select2({minimumResultsForSearch: -1}); });
+        $(document).ready(function() { $("#e4").select2({minimumResultsForSearch: -1}); });
+
 
         // WYSIHTML5编辑器
         $(".textarea").wysihtml5({

@@ -35,4 +35,10 @@ public class ProjServiceImpl implements ProjService {
         }
         return projectList;
     }
+
+    @Override
+    public void save(Project project) {
+        //System.out.println(project);
+        projMapper.insert(project);
+    }
 }

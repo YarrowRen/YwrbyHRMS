@@ -22,7 +22,15 @@
             <id column="deptId" property="id"/>
         </association>
     </resultMap>
+
+    <parameterMap id="insertProjMap" type="proj">
+
+    </parameterMap>
     <select id="findAll" resultMap="projList">
         select * from sys_proj
     </select>
+
+    <insert id="insert" parameterType="proj" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into sys_proj(projName,userId,deptId,clientName,startTime,deadline,state,scale,projDesc) values (#{projName},#{chargeUser.id},#{department.id},#{clientName},#{startTime},#{deadline},#{state},#{scale},#{projDesc})
+    </insert>
 </mapper>

@@ -158,7 +158,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="${pageContext.request.contextPath}/pages/proj-add.jsp" class="btn btn-sm btn-info btn-flat pull-left">创建新项目</a>
+                            <a href="${pageContext.request.contextPath}/proj/saveUI" class="btn btn-sm btn-info btn-flat pull-left">创建新项目</a>
 
                             <!-- 分页标签 -->
                             <div class="box-tools pull-right">

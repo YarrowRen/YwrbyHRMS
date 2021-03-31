@@ -12,6 +12,7 @@ public interface UserService {
      * @return 所有用户构成的集合
      */
     public List<User> userList(Integer page,Integer pageSize);
+    public List<User> userList();
 
     /**
      * 保存用户
