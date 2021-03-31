@@ -60,7 +60,7 @@
 				<ul class="treeview-menu">
 
 					<li><a
-						href="${pageContext.request.contextPath}/pages/proj-list.jsp">
+						href="${pageContext.request.contextPath}/proj/list">
 							<i class="fa fa-circle-o"></i> 项目管理
 					</a></li>
 					<li><a

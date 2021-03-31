@@ -92,13 +92,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                部门管理 <small>部门表单</small>
+                项目管理 <small>项目表单</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="${pageContext.request.contextPath}/dept/list">部门管理</a></li>
-                <li class="active">部门表单</li>
+                <li><a href="${pageContext.request.contextPath}/dept/list">项目管理</a></li>
+                <li class="active">项目表单</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -109,23 +109,68 @@
             <section class="content"> <!--产品信息-->
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">部门信息</div>
+                    <div class="panel-heading">项目表单</div>
                     <div class="row data-type">
 
-                        <div class="col-md-2 title">部门名称</div>
+                        <div class="col-md-2 title">项目名称</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="deptName" id="deptName"
-                                   placeholder="部门名称" value="">
+                                   placeholder="项目名称" value="">
                         </div>
 
-                        <div class="col-md-2 title">部门简介</div>
+                        <div class="col-md-2 title">客户单位</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="deptDesc"
-                                   placeholder="部门简介" value="">
+                                   placeholder="客户单位" value="">
                         </div>
 
+                        <div class="col-md-2 title">负责人</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="deptName" id="deptName"
+                                   placeholder="负责人" value="">
+                        </div>
+
+                        <div class="col-md-2 title">所属团队</div>
+                        <div class="col-md-4 data">
+                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--open" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="true" tabindex="0" aria-labelledby="select2-bkgw-container" aria-owns="select2-bkgw-results" aria-activedescendant="select2-bkgw-result-qpsi-阿拉巴马州"><span class="select2-selection__rendered" id="select2-bkgw-container" title="阿拉巴马州">阿拉巴马州</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                        </div>
+
+                        <div class="col-md-2 title">项目开始时间</div>
+                        <div class="col-md-4 data">
+                            <input type="date" class="form-control pull-right" id="datepicker">
+                        </div>
+
+                        <div class="col-md-2 title">项目截止时间</div>
+                        <div class="col-md-4 data">
+                            <input type="date" class="form-control pull-right" id="datepicker">
+                        </div>
+
+                        <div class="col-md-2 title">项目状态</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="deptName" id="deptName"
+                                   placeholder="项目状态" value="">
+                        </div>
+
+                        <div class="col-md-2 title">项目规模</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control" name="deptDesc"
+                                   placeholder="项目规模" value="">
+                        </div>
+
+
+                        <div class="col-md-12 title">项目内容基本介绍</div>
+                        <div>
+                            <textarea class="form-control" rows="5" placeholder="输入 ..." style="resize: none"></textarea>
+                        </div>
+
+                        <div class="col-md-12 title">项目附属文件</div>
+                        <div class="col-md-12 data">
+                            <input type="file" id="exampleInputFile">
+                        </div>
                     </div>
                 </div>
+
+
                 <!--订单信息/--> <!--工具栏-->
                 <div class="box-tools text-center">
                     <button type="submit" class="btn bg-maroon">保存</button>

@@ -113,33 +113,44 @@
                                         <th>状态</th>
                                         <th>负责人</th>
                                         <th>负责团队</th>
+                                        <th>客户单位</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">1</a></td>
-                                        <td>基础开发项目-1</td>
-                                        <td><span class="label label-success">已完成</span></td>
-                                        <td>李四</td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">2</a></td>
-                                        <td>基础开发项目-2</td>
-                                        <td><span class="label label-success">已完成</span></td>
-                                        <td>张三</td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                    <c:forEach items="${projectList}" var="proj">
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">${proj.id}</a></td>
+                                            <td>${proj.projName}</td>
+                                            <c:choose>
+                                                <c:when test="${proj.state==1}">
+                                                    <td><span class="label label-default">启动阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==2}">
+                                                    <td><span class="label label-info">计划阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==3}">
+                                                    <td><span class="label label-primary">执行阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==4}">
+                                                    <td><span class="label label-warning">结束阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==5}">
+                                                    <td><span class="label label-success">项目完成</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==6}">
+                                                    <td><span class="label label-danger">项目异常</span></td>
+                                                </c:when>
+                                            </c:choose>
+                                            <td>${proj.chargeUser.username}</td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                    ${proj.department.deptName}
+                                                </div>
+                                            </td>
+                                            <td>${proj.clientName}</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -147,7 +158,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">创建新项目</a>
+                            <a href="${pageContext.request.contextPath}/pages/proj-add.jsp" class="btn btn-sm btn-info btn-flat pull-left">创建新项目</a>
 
                             <!-- 分页标签 -->
                             <div class="box-tools pull-right">

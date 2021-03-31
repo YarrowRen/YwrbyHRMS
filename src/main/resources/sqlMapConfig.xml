@@ -9,6 +9,7 @@
         <typeAlias type="cn.ywrby.domain.Role" alias="role"/>
         <typeAlias type="cn.ywrby.domain.Log" alias="log"/>
         <typeAlias type="cn.ywrby.domain.Department" alias="dept"/>
+        <typeAlias type="cn.ywrby.domain.Project" alias="proj"/>
     </typeAliases>
 
     <!--

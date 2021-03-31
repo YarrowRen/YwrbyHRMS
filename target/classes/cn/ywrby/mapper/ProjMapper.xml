@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis部门映射文件-->
+<mapper namespace="cn.ywrby.mapper.ProjMapper">
+
+
+    <resultMap id="projList" type="proj">
+        <id column="id" property="id"/>
+        <result column="projName" property="projName"/>
+        <result column="clientName" property="clientName"/>
+        <result column="startTime" property="startTime"/>
+        <result column="deadline" property="deadline"/>
+        <result column="state" property="state"/>
+        <result column="scale" property="scale"/>
+        <result column="projDesc" property="projDesc"/>
+        <association property="chargeUser" javaType="user">
+            <id column="userId" property="id"/>
+        </association>
+        <association property="department" javaType="dept">
+            <id column="deptId" property="id"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="projList">
+        select * from sys_proj
+    </select>
+</mapper>

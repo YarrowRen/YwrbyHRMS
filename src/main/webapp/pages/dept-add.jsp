@@ -92,7 +92,7 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                角色管理 <small>角色表单</small>
+                部门管理 <small>部门表单</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
