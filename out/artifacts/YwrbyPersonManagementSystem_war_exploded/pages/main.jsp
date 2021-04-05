@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -147,9 +148,13 @@
                             <img class="profile-user-img img-responsive img-circle"
                                  src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户资料 picture">
 
-                            <h3 class="profile-username text-center">Ywrby</h3>
+                            <h3 class="profile-username text-center">${nowUser.username}</h3>
 
-                            <p class="text-muted text-center">总经理，软件工程师</p>
+                            <p class="text-muted text-center">
+                                <c:forEach items="${nowUser.roleList}" var="role">
+                                    ${role.roleName}
+                                </c:forEach>
+                            </p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
@@ -341,80 +346,41 @@
                                         <th>项目编号</th>
                                         <th>项目名称</th>
                                         <th>状态</th>
-                                        <th>负责人</th>
+                                        <th>负责人与团队</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">1</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-success">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">2</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-warning">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">3</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-danger">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">4</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-info">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                90,80,-90,70,-61,83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">5</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-warning">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">6</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-danger">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">7</a></td>
-                                        <td>基础开发项目</td>
-                                        <td><span class="label label-success">已完成</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <c:forEach items="${projList}" var="proj">
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">${proj.id}</a></td>
+                                            <td>${proj.projName}</td>
+                                            <c:choose>
+                                                <c:when test="${proj.state==1}">
+                                                    <td><span class="label label-default">启动阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==2}">
+                                                    <td><span class="label label-info">计划阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==3}">
+                                                    <td><span class="label label-primary">执行阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==4}">
+                                                    <td><span class="label label-warning">结束阶段</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==5}">
+                                                    <td><span class="label label-success">项目完成</span></td>
+                                                </c:when>
+                                                <c:when test="${proj.state==6}">
+                                                    <td><span class="label label-danger">项目异常</span></td>
+                                                </c:when>
+                                            </c:choose>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                        ${proj.chargeUser.username} <b>&</b> ${proj.department.deptName}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -422,8 +388,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">新订单</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">查看所有订单</a>
+                            <a href="${pageContext.request.contextPath}/proj/list" class="btn btn-sm btn-default btn-flat pull-right">查看所有订单</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -443,46 +408,13 @@
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
                             <ul class="users-list clearfix">
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">今天</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">昨天</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月12日</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月12日</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月13日</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月14日</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月15日</span>
-                                </li>
-                                <li>
-                                    <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                    <a class="users-list-name" href="#">Ywrby</a>
-                                    <span class="users-list-date">1月15日</span>
-                                </li>
+                                <c:forEach items="${userList}" var="user">
+                                    <li>
+                                        <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
+                                        <a class="users-list-name" href="#">${user.username}</a>
+                                        <span class="users-list-date" >${user.roleList[0].roleName}</span>
+                                    </li>
+                                </c:forEach>
                             </ul>
                             <!-- /.users-list -->
                         </div>

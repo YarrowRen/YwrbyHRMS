@@ -179,10 +179,6 @@
                             <textarea name="projDesc" class="form-control" rows="5" placeholder="输入 ..." style="resize: none"></textarea>
                         </div>
 
-                        <div class="col-md-12 title">项目附属文件</div>
-                        <div class="col-md-12 data">
-                            <input type="file" id="exampleInputFile">
-                        </div>
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@
 <body>
 	<!--重定向到主页main.jsp-->
 	<%
-		response.sendRedirect(request.getContextPath()+"/pages/main.jsp");
+		response.sendRedirect(request.getContextPath()+"/main/list");
 	%>
 </body>
 </html>

@@ -115,62 +115,47 @@
                         <div class="col-md-2 title">项目名称</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="projName" id="projName"
-                                   placeholder="项目名称" value="">
+                                   placeholder="项目名称" value="" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">客户单位</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="clientName"
-                                   placeholder="客户单位" value="">
+                                   placeholder="客户单位" value="" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">负责人</div>
                         <div class="col-md-4 data">
-                            <select id="e1" style="width: 100%" name="userId">
-                                <c:forEach items="${userList}" var="user">
-                                    <option value="${user.id}" >${user.username}</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" class="form-control"
+                                   placeholder="负责人" value="" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">所属团队</div>
                         <div class="col-md-4 data">
-                            <select id="e2" style="width: 100%"  name="deptId">
-                                <c:forEach items="${departmentList}" var="dept" >
-                                    <option value="${dept.id}">${dept.deptName}</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" class="form-control"
+                                   placeholder="所属团队" value="" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">项目开始时间</div>
                         <div class="col-md-4 data">
-                            <input type="date" class="form-control pull-right" name="startTime">
+                            <input type="text" class="form-control pull-right" name="startTime" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">项目截止时间</div>
                         <div class="col-md-4 data">
-                            <input type="date" class="form-control pull-right" name="deadline">
+                            <input type="text" class="form-control pull-right" name="deadline" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">项目状态</div>
                         <div class="col-md-4 data">
-                            <select id="e3" style="width: 100%" name="state">
-                                <option value="1">启动阶段</option>
-                                <option value="2">计划阶段</option>
-                                <option value="3">执行阶段</option>
-                                <option value="4">结束阶段</option>
-                                <option value="5">项目完成</option>
-                                <option value="6">项目异常</option>
-                            </select>
+                            <input type="text" class="form-control"
+                                   placeholder="项目状态" value="" readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">项目规模</div>
                         <div class="col-md-4 data">
-                            <select id="e4" style="width: 100%" name="scale">
-                                <option value="1">大型项目</option>
-                                <option value="2">中型项目</option>
-                                <option value="3">小型项目</option>
-                            </select>
+                            <input type="text" class="form-control"
+                                   placeholder="项目规模" value="" readonly="readonly">
                         </div>
 
 
@@ -178,7 +163,27 @@
                         <div>
                             <textarea name="projDesc" class="form-control" rows="5" placeholder="输入 ..." style="resize: none"></textarea>
                         </div>
+                    </div>
 
+
+                    <div class="row data-type">
+                        <div class="col-md-6">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">项目状态表</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <canvas id="pieChart" style="height: 293px; width: 586px;" height="366" width="732"></canvas>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -319,6 +324,79 @@
             liObj.addClass("active");
         }
     }
+
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+    var pieChart = new Chart(pieChartCanvas);
+    var PieData = [
+        {
+            value: 700,
+            color: "#f56954",
+            highlight: "#f56954",
+            label: "Chrome"
+        },
+        {
+            value: 500,
+            color: "#00a65a",
+            highlight: "#00a65a",
+            label: "IE"
+        },
+        {
+            value: 400,
+            color: "#f39c12",
+            highlight: "#f39c12",
+            label: "FireFox"
+        },
+        {
+            value: 600,
+            color: "#00c0ef",
+            highlight: "#00c0ef",
+            label: "Safari"
+        },
+        {
+            value: 300,
+            color: "#3c8dbc",
+            highlight: "#3c8dbc",
+            label: "Opera"
+        },
+        {
+            value: 100,
+            color: "#d2d6de",
+            highlight: "#d2d6de",
+            label: "Navigator"
+        }
+    ];
+    var pieOptions = {
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Number - Amount of animation steps
+        animationSteps: 100,
+        //String - Animation easing effect
+        animationEasing: "easeOutBounce",
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+        //String - A legend template
+
+    };
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions);
 
 </script>
 
