@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--mybatis核心配置文件-->
+<configuration>
+    <!--配置别名-->
+    <typeAliases>
+        <typeAlias type="cn.ywrby.domain.User" alias="user"/>
+        <typeAlias type="cn.ywrby.domain.Role" alias="role"/>
+        <typeAlias type="cn.ywrby.domain.Log" alias="log"/>
+        <typeAlias type="cn.ywrby.domain.Department" alias="dept"/>
+        <typeAlias type="cn.ywrby.domain.Project" alias="proj"/>
+    </typeAliases>
+
+    <!--
+    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+    properties?, settings?,
+    typeAliases?, typeHandlers?,
+    objectFactory?,objectWrapperFactory?,
+    plugins?,
+    environments?, databaseIdProvider?, mappers?
+    -->
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--配置数据库方言-->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
+</configuration>

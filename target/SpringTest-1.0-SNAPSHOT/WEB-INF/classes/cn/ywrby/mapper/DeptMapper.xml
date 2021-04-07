@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis部门映射文件-->
+<mapper namespace="cn.ywrby.mapper.DeptMapper">
+    <resultMap id="roleMap" type="role">
+        <id column="rid" property="id"/>
+        <result column="roleName" property="roleName"/>
+        <result column="roleDesc" property="roleDesc"/>
+        <association property="department" javaType="dept">
+            <id column="did" property="id"/>
+            <result column="deptName" property="deptName"/>
+            <result column="deptDesc" property="deptDesc"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultType="dept">
+        select * from sys_dept
+    </select>
+
+    <select id="findDeptById" resultType="dept">
+        select * from sys_dept d where d.id=#{id}
+    </select>
+
+    <select id="findRolesByDeptId" resultMap="roleMap" parameterType="java.lang.Long">
+        select *,r.id rid,d.id did from sys_role_dept rd,sys_role r,sys_dept d where rd.roleId=r.id and rd.deptId=d.id and d.id=#{id}
+    </select>
+
+    <update id="update" parameterType="dept">
+        update sys_dept set deptName=#{deptName} , deptDesc=#{deptDesc} where id=#{id}
+    </update>
+
+    <insert id="insert" parameterType="dept" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into sys_dept(deptName,deptDesc) values (#{deptName},#{deptDesc})
+    </insert>
+
+</mapper>

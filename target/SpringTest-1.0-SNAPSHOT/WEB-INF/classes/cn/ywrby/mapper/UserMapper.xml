@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis用户映射文件-->
+<mapper namespace="cn.ywrby.mapper.UserMapper">
+
+    <select id="findAll" resultType="user">
+        select * from sys_user
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="user">
+        insert into sys_user(username,email,password,phoneNum) values (#{username},#{email},#{password},#{phoneNum})
+    </insert>
+
+    <update id="update" parameterType="user">
+        update sys_user set username=#{username},email=#{email},password=#{password},phoneNum=#{phoneNum} where id=#{id}
+    </update>
+
+    <update id="updateUserRole">
+        insert into sys_user_role values (#{userId},#{roleId})
+    </update>
+
+    <delete id="delUserRole" parameterType="java.lang.Long">
+        delete from sys_user_role where userId = #{id}
+    </delete>
+
+    <delete id="delUser" parameterType="java.lang.Long">
+        delete from sys_user where id = #{id}
+    </delete>
+
+    <select id="findByUsernameAndPassword" resultType="user">
+        select * from sys_user where username= #{username} and password = #{password} limit 1
+    </select>
+
+    <select id="findUserById" resultType="user" parameterType="java.lang.Long">
+        select * from sys_user where id = #{id}
+    </select>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultType="user">
+        select * from sys_user where username like concat('%',#{username},'%')
+    </select>
+</mapper>

@@ -1,0 +1,20 @@
+ul.pagination>li>span,ul.pagination>li>a,ul.pagination>li.active>a,ul.pager>li>span{
+    cursor: pointer;
+}
+.input-page-div>input{
+    width:5em;
+    height:1.8em;
+    margin:0.4em 0.2em 0.2em 0.2em;
+    text-align: center;
+}
+.input-page-div>.input-btn-xs{
+    margin-left:1em;
+    font-size: 1em;
+    width:3em;
+    background-color: #337ab7;
+    color:#fff;
+}
+.input-page-div{
+    display: inline-block;
+    margin-left:1em;
+}

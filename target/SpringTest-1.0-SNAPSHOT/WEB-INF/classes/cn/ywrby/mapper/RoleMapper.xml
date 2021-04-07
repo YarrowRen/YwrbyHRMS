@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射文件DTD约束头-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mybatis角色映射文件-->
+<mapper namespace="cn.ywrby.mapper.RoleMapper">
+
+    <resultMap id="deptMap" type="dept">
+        <id column="did" property="id"/>
+        <result column="deptName" property="deptName"/>
+        <result column="deptDesc" property="deptDesc"/>
+    </resultMap>
+
+    <select id="findAll" resultType="role">
+        select * from sys_role
+    </select>
+
+    <update id="update" parameterType="role">
+        update sys_role set roleName=#{roleName},roleDesc=#{roleDesc} where id=#{id}
+    </update>
+
+    <insert id="insert" parameterType="role" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into sys_role(roleName,roleDesc) values (#{roleName},#{roleDesc})
+    </insert>
+
+    <select id="findRolesByUserId" parameterType="java.lang.Long" resultType="role">
+        select * from sys_user_role ur,sys_role r where ur.roleId=r.id and ur.userId=#{id}
+    </select>
+
+    <delete id="delUserRole" parameterType="java.lang.Long">
+        delete from sys_user_role where roleId = #{id}
+    </delete>
+
+    <delete id="delRole" parameterType="java.lang.Long">
+        delete from sys_role where id = #{id}
+    </delete>
+
+    <select id="findRoleById" parameterType="java.lang.Long" resultType="role">
+        select * from sys_role where id = #{id}
+    </select>
+
+    <select id="findDeptByRoleId" resultMap="deptMap" parameterType="java.lang.Long">
+        select *,d.id did,r.id rid from sys_role_dept rd,sys_dept d,sys_role r where rd.roleId=r.id and rd.deptId=d.id and r.id=#{id}
+    </select>
+
+    <insert id="insertRoleDept">
+        insert into sys_role_dept values (#{roleId},#{deptId})
+    </insert>
+
+    <delete id="delRoleDept" parameterType="java.lang.Long">
+        delete from sys_role_dept where roleId=#{id}
+    </delete>
+</mapper>
