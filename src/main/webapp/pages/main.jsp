@@ -120,7 +120,7 @@
                             <h3>项目</h3>
                             <p>项目管理</p>
                         </div>
-                        <a href="${pageContext.request.contextPath}/user/list" class="small-box-footer">
+                        <a href="${pageContext.request.contextPath}/proj/list" class="small-box-footer">
                             点击查看
                         </a>
                     </div><!-- /.info-box -->
@@ -175,126 +175,35 @@
                     <!-- /.box -->
                 </div>
 
-
-                <div class="col-lg-6">
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <i class="ion ion-clipboard"></i>
-
-                            <h3 class="box-title">待办事项</h3>
-
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <!-- USERS LIST -->
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">最新成员</h3>
                             <div class="box-tools pull-right">
-                                <ul class="pagination pagination-sm inline">
-                                    <li><a href="#">&laquo;</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">&raquo;</a></li>
-                                </ul>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                                </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <ul class="todo-list">
-                                <li>
-                                    <!-- drag handle -->
-                                    <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <!-- checkbox -->
-                                    <input type="checkbox" value="">
-                                    <!-- todo text -->
-                                    <span class="text">测试事项1</span>
-                                    <!-- Emphasis label -->
-                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 分钟前</small>
-                                    <!-- General tools such as edit or delete-->
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <input type="checkbox" value="">
-                                    <span class="text">测试事项2</span>
-                                    <small class="label label-info"><i class="fa fa-clock-o"></i> 4 小时前</small>
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <input type="checkbox" value="">
-                                    <span class="text">测试事项3</span>
-                                    <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 天前</small>
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <input type="checkbox" value="">
-                                    <span class="text">测试事项4</span>
-                                    <small class="label label-success"><i class="fa fa-clock-o"></i> 3 天前</small>
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <input type="checkbox" value="">
-                                    <span class="text">测试事项5</span>
-                                    <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 周前</small>
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                    <input type="checkbox" value="">
-                                    <span class="text">测试事项6</span>
-                                    <small class="label label-default"><i class="fa fa-clock-o"></i> 1 月前</small>
-                                    <div class="tools">
-                                        <i class="fa fa-check-square-o"></i>
-                                        <i class="fa fa-edit"></i>
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
+                        <div class="box-body no-padding">
+                            <ul class="users-list clearfix">
+                                <c:forEach items="${userList}" var="user">
+                                    <li>
+                                        <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
+                                        <a class="users-list-name" href="#">${user.username}</a>
+                                        <span class="users-list-date" >${user.roleList[0].roleName}</span>
+                                    </li>
+                                </c:forEach>
                             </ul>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix no-border">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> 添加项目
-                            </button>
+                            <!-- /.users-list -->
                         </div>
                     </div>
-                    <!-- /.box -->
                 </div>
+
+                <div class="col-lg-1"></div>
                 <div class="col-lg-3">
                     <!-- About Me Box -->
                     <div class="box box-primary">
@@ -325,6 +234,7 @@
             </div>
 
             <div class="row">
+
                 <div class="col-lg-8">
                     <!-- TABLE: LATEST ORDERS -->
                     <div class="box box-info">
@@ -394,32 +304,6 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4">
-                    <!-- USERS LIST -->
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">最新成员</h3>
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <ul class="users-list clearfix">
-                                <c:forEach items="${userList}" var="user">
-                                    <li>
-                                        <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" alt="用户图像">
-                                        <a class="users-list-name" href="#">${user.username}</a>
-                                        <span class="users-list-date" >${user.roleList[0].roleName}</span>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                            <!-- /.users-list -->
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

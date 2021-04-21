@@ -63,10 +63,6 @@
 						href="${pageContext.request.contextPath}/proj/list">
 							<i class="fa fa-circle-o"></i> 项目管理
 					</a></li>
-					<li><a
-						href="#">
-							<i class="fa fa-circle-o"></i> 事务管理
-					</a></li>
 
 				</ul></li>
 
